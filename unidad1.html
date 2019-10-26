@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Evaluación Unidad 1</title>
+  </head>
+  <script type="text/javascript">
+
+
+  var estudiantes = [
+      {
+  		"codigo": "001",
+  		"nombre": "Manuel Perez",
+      "nota": 5
+  	}, {
+  		"codigo": "002",
+  		"nombre": "Rosa Moreno",
+      "nota": 8
+  	}, {
+  		"codigo": "003",
+  		"nombre": "Carlos Rojas",
+      "nota": 9
+  	},
+    {
+    "codigo": "004",
+    "nombre": "Estudiante Perez",
+    "nota": 7
+  }, {
+    "codigo": "005",
+    "nombre": "Estudiante5",
+    "nota": 8
+  }, {
+    "codigo": "006",
+    "nombre": "Estudiante6",
+    "nota": 4
+  },{
+    "codigo": "007",
+    "nombre": "Estudiante7",
+    "nota": 9
+  },
+  {
+  "codigo": "008",
+  "nombre": "Estudiante8",
+  "nota": 7
+}, {
+  "codigo": "009",
+  "nombre": "Estudiante9",
+  "nota": 8
+}, {
+  "codigo": "010",
+  "nombre": "Estudiante10",
+  "nota": 10
+},
+
+
+  ];
+
+  function mostrarEstudiantes(json) {
+      var out = "";
+      var i;
+      for(i = 0; i < json.length; i++) {
+         out=out+"Codigo:"+json[i].codigo+" - "+" Nombre:"+json[i].nombre+" - Nota:"+json[i].nota+"<br>";
+      }
+
+      document.getElementById("lista").innerHTML=out;
+
+  }
+
+  function mostrarPromedio(json) {
+      var out = 0;
+      var i;
+      for(i = 0; i < json.length; i++) {
+         out=out+json[i].nota;
+      }
+      out=out/10;
+      document.getElementById("lista").innerHTML=out;
+
+  }
+
+  function mostrarNotaMayor(json) {
+      var out = "";
+      var indice = 0;
+      var nota = json[0].nota;
+      var i;
+      for(i = 0; i < json.length; i++) {
+         if(nota<json[i].nota){
+           nota=json[i].nota;
+           indice=i;
+         }
+      }
+      out="Codigo:"+json[i-1].codigo+" - "+" Nombre:"+json[i-1].nombre+" - Nota:"+json[i-1].nota;
+      document.getElementById("lista").innerHTML=out;
+
+  }
+
+  function mostrarNotaMenor(json) {
+      var out = "";
+      var indice = 0;
+      var nota = json[0].nota;
+      var i;
+      for(i = 0; i < json.length; i++) {
+         if(nota>json[i].nota){
+           nota=json[i].nota;
+           indice=i;
+         }
+      }
+      out="Codigo:"+json[indice].codigo+" - "+" Nombre:"+json[indice].nombre+" - Nota:"+json[indice].nota;
+      document.getElementById("lista").innerHTML=out;
+
+  }
+
+
+  </script>
+  <body>
+    <button onclick="mostrarEstudiantes(estudiantes)">Mostrar estudiantes</button>
+    <button onclick="mostrarPromedio(estudiantes)">Nota promedio</button>
+    <button onclick="mostrarNotaMayor(estudiantes)">Estudiante con la nota Mayor</button>
+    <button onclick="mostrarNotaMenor(estudiantes)">Estudiante con la nota Mayor</button>
+    <div id="lista">
+
+    </div>
+  </body>
+</html>
